@@ -57,6 +57,7 @@ end
 
 #deal with extra posts
 if extra > 0
+   offset = i * 20
    posts = client.posts(ARGV[0], :type => "photo", "limit" => 20, "offset" =>offset)
    posts["posts"].each {|post|
      da_id = post["id"]
