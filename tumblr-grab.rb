@@ -58,6 +58,16 @@ end
 #deal with extra posts
 if extra > 0
    posts = client.posts(ARGV[0], :type => "photo", "limit" => 20, "offset" =>offset)
+   posts["posts"].each {|post|
+     da_id = post["id"]
+     da_photo = post["photos"][0]["original_size"]
+     da_url = da_photo["url"]
+     da_ext = da_url[da_url.length - 3, da_url.length - 1]
+     #save the image using it's id as name
+     agent.get(da_url).save("photos/#{da_id}.#{da_ext}")
+     #add a 2 sec delay to overcome rate limits
+     #sleep(2)
+  }
 end
 
 puts "Done !"
