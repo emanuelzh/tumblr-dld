@@ -1,5 +1,5 @@
-# Tumblr site grabber
-# Download all images from a tumblr site
+# Tumblr photo download
+# Download all photos from a tumblr site
 # Emanuel Zámano H. 2014
 
 require('tumblr_client')
